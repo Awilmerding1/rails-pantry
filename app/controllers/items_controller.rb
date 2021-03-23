@@ -16,11 +16,13 @@ class ItemsController < ApplicationController
   end
 
   def new
+    # binding.pry
     @item = Item.new
     @item.measurements.build(user: current_user)
   end
 
   def create
+    binding.pry
     @item = Item.create(item_params)
     if @item.save
       redirect_to item_path(@item)
@@ -44,6 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+
     @item.destroy
     redirect_to items_path
   end
